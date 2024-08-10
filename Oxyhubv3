@@ -37,7 +37,8 @@ local ChangelogTab = Window:CreateTab("Changelog", 4483362458)
 if ChangelogTab then
     -- Add Sections and Elements to Changelog Tab
     ChangelogTab:CreateSection("Recent Changes")
-    ChangelogTab:CreateLabel("🆕 Added 10+ new scripts") -- Update with actual number of scripts
+    ChangelogTab:CreateLabel("🆕 Added 10+ new scripts")
+    ChangelogTab:CreateLabel("🚀 Added support for Pet Simulator 99, Tower of Hell, Murder Mystery 2, Sindo Life, and Bee Swarm Simulator")
 else
     print("Failed to create Changelog tab.")
 end

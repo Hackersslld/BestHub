@@ -8,7 +8,7 @@ local Window = Rayfield:CreateWindow({
    LoadingSubtitle = "Scripting Made Easy",
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = "YourHub", -- Custom folder name
+      FolderName = "OxyHub", -- Custom folder name
       FileName = "Config"
    },
    Discord = {
@@ -16,7 +16,7 @@ local Window = Rayfield:CreateWindow({
       Invite = "noinvitelink",
       RememberJoins = true
    },
-   KeySystem = true, -- Key system enabled
+   KeySystem = true,
    KeySettings = {
       Title = "Access Key",
       Subtitle = "Enter your key",
@@ -24,102 +24,98 @@ local Window = Rayfield:CreateWindow({
       FileName = "Key",
       SaveKey = true,
       GrabKeyFromSite = false,
-      Key = {"YourKey"} -- Use the correct key
+      Key = {"YourKey"} -- Replace "YourKey" with your actual key
    }
 })
 
 -- Create Tabs for Different Sections
 local HomeTab = Window:CreateTab("Home", 4483362458)
 local ScriptsTab = Window:CreateTab("Scripts", 4483362458)
-local NewsTab = Window:CreateTab("News", 4483362458)
-local UpdatesTab = Window:CreateTab("Updates", 4483362458)
-local SupportTab = Window:CreateTab("Support", 4483362458)
 
--- Home Tab
+-- Add Sections and Elements to Home Tab
 HomeTab:CreateLabel("Welcome to OxyHub!")
+HomeTab:CreateLabel("News: Check out the latest updates!")
 HomeTab:CreateSection("Server Status")
-HomeTab:CreateLabel("Server 1: Online", Color3.fromRGB(0, 255, 0)) -- Green circle can be added via UI
-HomeTab:CreateLabel("Server 2: Online", Color3.fromRGB(0, 255, 0))
+
+-- Add server status with visual indicators
+HomeTab:CreateLabel("🟢 Server 1: Online")
+HomeTab:CreateLabel("🟢 Server 2: Online")
+HomeTab:CreateLabel("🟢 Database: Online")
+
 HomeTab:CreateSection("Other")
 HomeTab:CreateButton({
-    Name = "Visit GitHub",
+    Name = "GitHub",
     Callback = function()
         -- Open GitHub repository link
         print("Opening GitHub...")
     end
 })
 
--- Scripts Tab
-local ScriptsSection = ScriptsTab:CreateSection("Game Scripts")
-ScriptsSection:CreateButton({
+-- Function to unload the UI
+local function UnloadUI()
+    Rayfield:Destroy() -- Unloads the Rayfield UI
+end
+
+-- Add Sections and Elements to Scripts Tab
+ScriptsTab:CreateButton({
     Name = "Adopt Me!",
     Callback = function()
         loadstring(game:HttpGet("https://egorikusa.space/271ee1956d4b196c73150e64.lua", true))()
+        UnloadUI() -- Unload the UI after script execution
     end
 })
-ScriptsSection:CreateButton({
+ScriptsTab:CreateButton({
     Name = "Bloxburg",
     Callback = function()
         loadstring(game:HttpGet("https://vedrox.com/data/scripts/free/script.lua"))()
+        UnloadUI() -- Unload the UI after script execution
     end
 })
-ScriptsSection:CreateButton({
+ScriptsTab:CreateButton({
     Name = "Piggy",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/DFDERD41/autofarms-2-game/main/piggynoob", true))()
+        loadstring(Game:HttpGet("https://raw.githubusercontent.com/DFDERD41/autofarms-2-game/main/piggynoob", true))()
+        UnloadUI() -- Unload the UI after script execution
     end
 })
-ScriptsSection:CreateButton({
+ScriptsTab:CreateButton({
     Name = "Arsenal",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaoHubArsenal"))()
+        UnloadUI() -- Unload the UI after script execution
     end
 })
-ScriptsSection:CreateButton({
+ScriptsTab:CreateButton({
     Name = "JailBreak",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/BlitzIsKing/UniversalFarm/main/Loader/Regular"))()
+        UnloadUI() -- Unload the UI after script execution
     end
 })
 
--- Updates Tab
-local UpdatesSection = UpdatesTab:CreateSection("Update Logs")
-UpdatesSection:CreateLabel("🆕 Added Adopt Me!", Color3.fromRGB(255, 255, 255)) -- Example of update log
-UpdatesSection:CreateLabel("🆕 Added Bloxburg!", Color3.fromRGB(255, 255, 255)) -- Example of update log
-
--- Support Tab
-local SupportSection = SupportTab:CreateSection("Support")
-SupportSection:CreateLabel("Frequently Asked Questions (FAQ)")
-SupportSection:CreateLabel("1. How do I use the scripts?")
-SupportSection:CreateLabel("   - Click on a game script and follow the instructions.")
-SupportSection:CreateLabel("2. How do I get a key?")
-SupportSection:CreateLabel("   - Obtain your key from our official website.")
-SupportSection:CreateLabel("Contact Us:")
-SupportSection:CreateLabel("For further assistance, reach out to our support team via email at support@oxyhub.com.")
-
 -- Example of a Notification
 Rayfield:Notify({
-    Title = "Welcome",
-    Content = "Thank you for using OxyHub!",
-    Duration = 5,
-    Image = 4483362458,
-    Actions = {
-        Ignore = {
-            Name = "Okay!",
-            Callback = function()
-                print("The user tapped Okay!")
-            end
-        }
-    }
+   Title = "Welcome",
+   Content = "Thank you for using our script hub!",
+   Duration = 5,
+   Image = 4483362458,
+   Actions = {
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+            print("The user tapped Okay!")
+         end
+      }
+   }
 })
 
 -- Example of an Input Box in Home Tab
 local Input = HomeTab:CreateInput({
-    Name = "Enter Your Name",
-    PlaceholderText = "Type your name here...",
-    Callback = function(Text)
-        print("User entered: " .. Text)
-    end,
+   Name = "Enter Your Name",
+   PlaceholderText = "Type your name here...",
+   Callback = function(Text)
+      print("User entered: " .. Text)
+   end,
 })
 
 -- Clean up the interface when needed

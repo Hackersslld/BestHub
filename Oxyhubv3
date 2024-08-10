@@ -33,6 +33,15 @@ local HomeTab = Window:CreateTab("Home", 4483362458)
 local ScriptsTab = Window:CreateTab("Scripts", 4483362458)
 local ChangelogTab = Window:CreateTab("Changelog", 4483362458)
 
+-- Ensure Changelog Tab is created correctly
+if ChangelogTab then
+    -- Add Sections and Elements to Changelog Tab
+    ChangelogTab:CreateSection("Recent Changes")
+    ChangelogTab:CreateLabel("🆕 Added 10+ new scripts")
+else
+    print("Failed to create Changelog tab.")
+end
+
 -- Add Sections and Elements to Home Tab
 HomeTab:CreateLabel("Welcome to OxyHub!")
 HomeTab:CreateLabel("News: Check out the latest updates!")
@@ -93,10 +102,6 @@ ScriptsTab:CreateButton({
         UnloadUI() -- Unload the UI after script execution
     end
 })
-
--- Add Sections and Elements to Changelog Tab
-ChangelogTab:CreateSection("Recent Changes")
-ChangelogTab:CreateLabel("🆕 Added 10+ new scripts")
 
 -- Example of a Notification
 Rayfield:Notify({

@@ -37,7 +37,7 @@ local ChangelogTab = Window:CreateTab("Changelog", 4483362458)
 if ChangelogTab then
     -- Add Sections and Elements to Changelog Tab
     ChangelogTab:CreateSection("Recent Changes")
-    ChangelogTab:CreateLabel("🆕 Added 10+ new scripts")
+    ChangelogTab:CreateLabel("🆕 Added 10+ new scripts") -- Update with actual number of scripts
 else
     print("Failed to create Changelog tab.")
 end
@@ -99,6 +99,41 @@ ScriptsTab:CreateButton({
     Name = "JailBreak",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/BlitzIsKing/UniversalFarm/main/Loader/Regular"))()
+        UnloadUI() -- Unload the UI after script execution
+    end
+})
+ScriptsTab:CreateButton({
+    Name = "Pet Simulator 99",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NEXUS-Official/NEXUS-HUB/main/Nexus-Hub"))()
+        UnloadUI() -- Unload the UI after script execution
+    end
+})
+ScriptsTab:CreateButton({
+    Name = "Tower of Hell",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/sc0ttferren/robloxscripts/main/toh/sc0tt.lua'))()
+        UnloadUI() -- Unload the UI after script execution
+    end
+})
+ScriptsTab:CreateButton({
+    Name = "Murder Mystery 2",
+    Callback = function()
+        loadstring(game:HttpGet("https://farmerjoe.vercel.app/scripts/MM2_InvisibleFArm.lua"))()
+        UnloadUI() -- Unload the UI after script execution
+    end
+})
+ScriptsTab:CreateButton({
+    Name = "Sindo Life",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SxnwDev/Premier/main/Free-Premier.lua", true))()
+        UnloadUI() -- Unload the UI after script execution
+    end
+})
+ScriptsTab:CreateButton({
+    Name = "Bee Swarm Simulator",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/AdelOnTheTop/Adel-Hub/main/Main.lua'))()
         UnloadUI() -- Unload the UI after script execution
     end
 })
